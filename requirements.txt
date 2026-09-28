@@ -1,0 +1,4 @@
+# Core dependency
+# SQLite is included with Python
+
+python-dotenv>=1.0.0

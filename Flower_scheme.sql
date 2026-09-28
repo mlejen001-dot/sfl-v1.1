@@ -1,0 +1,10 @@
+CREATE TABLE flowers(id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT UNIQUE,base_time_seconds INTEGER,rarity TEXT,source TEXT,verified INTEGER,notes TEXT);
+CREATE TABLE seeds(id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT UNIQUE,source TEXT,verified INTEGER);
+CREATE TABLE ingredients(id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT UNIQUE,source TEXT,verified INTEGER);
+CREATE TABLE recipes(id INTEGER PRIMARY KEY AUTOINCREMENT,flower_id INTEGER,seed_id INTEGER,route_number INTEGER,route_time_seconds INTEGER,source TEXT,verified INTEGER,notes TEXT);
+CREATE TABLE recipe_ingredients(id INTEGER PRIMARY KEY AUTOINCREMENT,recipe_id INTEGER,ingredient_id INTEGER,quantity INTEGER,quantity_source TEXT,source TEXT,verified INTEGER,notes TEXT);
+CREATE TABLE recipe_dependencies(id INTEGER PRIMARY KEY AUTOINCREMENT,recipe_id INTEGER,parent_item_type TEXT,parent_item_id INTEGER,child_item_type TEXT,child_item_id INTEGER,quantity INTEGER,quantity_source TEXT,source TEXT,verified INTEGER,notes TEXT);
+CREATE TABLE modifiers(id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT,category TEXT,effect_type TEXT,effect_value TEXT,source TEXT,verified INTEGER,notes TEXT);
+CREATE TABLE uncertain_data(id INTEGER PRIMARY KEY AUTOINCREMENT,section TEXT,field TEXT,raw_text TEXT,possible_value TEXT,reason TEXT,confidence REAL);
+CREATE TABLE duplicate_records(id INTEGER PRIMARY KEY AUTOINCREMENT,table_name TEXT,record_value TEXT,reason TEXT);
+CREATE TABLE data_sources(id INTEGER PRIMARY KEY AUTOINCREMENT,source_name TEXT,source_type TEXT,description TEXT,date_extracted TEXT);
